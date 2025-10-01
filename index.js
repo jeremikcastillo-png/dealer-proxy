@@ -10,8 +10,36 @@ const TARGET_URL =
 
 // ======= Normalizador de payload (alias boricuas → claves oficiales) =======
 function normalizePayload(p) {
-  const out = { ...p };
-
+  return {
+    ...p,
+    // --- Aliases principales ---
+    Placa: p.placa || p.tablilla || "",
+    Marca: p.marca || "",
+    Modelo: p.modelo || "",
+    Año: p.ano || p.Año || "",
+    VIN: p.vin || "",
+    Transmision: p.transmision || p.trans || "",
+    Combustible: p.combustible || p.fuel || "",
+    Traccion: p.traccion || p.drive || "",
+    Condicion_Score: p.condicion_score || p.condicion || "",
+    Descripcion: p.descripcion || p.notes || "",
+    Precio_Publicado: p.precio_publicado || "",
+    Precio_Piso: p.precio_piso || "",
+    Dueño_Stock: p.dueno_stock || p.owner || "Jeremy",
+    // --- Otros ---
+    Costo_Compra: p.costo_compra || "",
+    Costo_Reacond: p.costo_reacond || "",
+    Otros_Costos: p.otros_costos || "",
+    Fecha_Adquisicion: p.fecha_adquisicion || "",
+    Fecha_Publicacion: p.fecha_publicacion || "",
+    Fuente_Adquisicion: p.fuente_adquisicion || "",
+    Ubicacion_Lote: p.ubicacion_lote || "",
+    Fotos_URL: p.fotos_url || "",
+    Estado_Venta: p.estado_venta || "",
+    Llaves: p.llaves || "",
+    Notas: p.notas || ""
+  };
+  
   // Normaliza números (quita $ y comas)
   const toNumber = (v) => {
     if (v === undefined || v === null) return v;
