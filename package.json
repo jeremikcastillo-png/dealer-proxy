@@ -1,12 +1,15 @@
 {
   "name": "dealer-proxy",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=18" },
   "scripts": {
-    "start": "node index.js"
+    "dev": "vercel dev",
+    "start": "vercel dev",
+    "deploy": "vercel deploy --prod"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "node-fetch": "^2.6.1"
+    "zod": "^3.23.8"
   }
 }
